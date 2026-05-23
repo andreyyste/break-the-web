@@ -1,0 +1,379 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Global Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    overflow-x: hidden; /* Biar gak ada scroll horizontal aneh */
+}
+
+/* --- Navbar --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #00ff00; /* Hint warna hijau ala game lu */
+}
+
+/* --- Hero Section (Tempat Game) --- */
+.hero-section {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero-section h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+/* --- Game Box Mechanics --- */
+#game-box {
+    width: 250px;
+    height: 70px;
+    background-color: #111;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    cursor: pointer;
+    border-radius: 8px;
+    position: relative;
+    transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+#game-box.expanded {
+    width: 800px;  /* Maksimal lebarnya segini, gak full screen */
+    height: 500px;
+    cursor: default;
+    border-radius: 12px;
+    align-items: flex-start;
+    padding-top: 30px;
+    background-color: #0a0a0a;
+}
+
+/* The actual phaser container, we want it absolute inside game-box */
+#game-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+#play-text {
+    position: relative;
+    display: inline-block;
+    transition: color 0.5s ease;
+    z-index: 10;
+}
+
+#letter-m {
+    display: inline-block;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.fade-out-text {
+    color: transparent !important; 
+}
+
+.falling {
+    animation: dropDown 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes dropDown {
+    0% { transform: translateY(0); }
+    60% { transform: translateY(400px); }
+    75% { transform: translateY(370px); }
+    90% { transform: translateY(400px); }
+    95% { transform: translateY(390px); }
+    100% { transform: translateY(400px); }
+}
+
+/* --- About Section --- */
+.about-section {
+    padding: 80px 10%;
+    background-color: #fff;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+/* Styling khusus buat target curian kita */
+#kunci-t {
+    cursor: grab;
+    display: inline-block;
+    color: #111;
+    transition: transform 0.2s, color 0.2s;
+}
+
+#kunci-t:hover {
+    transform: scale(1.2);
+    color: #00ff00; /* Nyala dikit pas di-hover biar user sadar ini bisa diinteraksi */
+}
+
+#kunci-t:active {
+    cursor: grabbing;
+}
+
+.content-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    text-align: left;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.card p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: #111;
+    color: #888;
+}
+
+/* --- Contact Section --- */
+.contact-section {
+    padding: 80px 10%;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #00ff00;
+    outline: none;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.contact-form .btn {
+    padding: 15px 30px;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-top: 10px;
+}
+
+.contact-form .btn:hover {
+    background-color: #00ff00;
+    color: #111;
+}
+
+.contact-form .btn:active {
+    transform: scale(0.98);
+}
+
+/* --- Checkpoint 4: Total System Failure --- */
+@keyframes glitch-anim {
+  0% { transform: translate(0) skewX(0); filter: hue-rotate(0deg); }
+  10% { transform: translate(-5px, 5px) skewX(10deg); filter: hue-rotate(90deg); }
+  20% { transform: translate(5px, -5px) skewX(-10deg); filter: hue-rotate(180deg); }
+  30% { transform: translate(0, 0) skewX(0); filter: hue-rotate(0deg); }
+  40% { transform: translate(-10px, 0) skewX(20deg); filter: invert(1); }
+  50% { transform: translate(10px, 5px) skewX(-20deg); filter: invert(0); }
+  60% { transform: translate(0) skewX(0); }
+  70% { transform: translate(-2px, -2px) skewX(5deg); }
+  80% { transform: translate(2px, 2px) skewX(-5deg); filter: hue-rotate(270deg); }
+  90% { transform: translate(0) skewX(0); }
+  100% { transform: translate(0) skewX(0); }
+}
+
+.glitch-mode {
+  animation: glitch-anim 0.2s infinite;
+  overflow: hidden;
+}
+
+.kernel-panic {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  color: #00ff00;
+  font-family: 'Courier New', Courier, monospace;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.kernel-panic h1 {
+  color: #ff0000;
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.kernel-panic p {
+  font-size: 24px;
+}
+
+/* --- Checkpoint 5: Horror Mode --- */
+.horror-theme {
+    background-color: #050000 !important;
+    color: #ff0000 !important;
+}
+.horror-theme .navbar {
+    background-color: #0a0000 !important;
+    box-shadow: 0 2px 10px rgba(255,0,0,0.1);
+}
+.horror-theme .nav-links a {
+    color: #880000 !important;
+}
+.horror-theme .nav-links a:hover {
+    color: #ff0000 !important;
+    text-shadow: 0 0 5px #ff0000;
+}
+.horror-theme .subtitle {
+    color: #aa0000 !important;
+}
+.horror-theme .about-section {
+    background-color: #050000 !important;
+}
+.horror-theme .card {
+    background: #0a0000 !important;
+    border: 1px solid #330000;
+}
+.horror-theme .card p {
+    color: #aa0000 !important;
+}
+.horror-theme #game-box {
+    background-color: #330000 !important;
+    box-shadow: 0 0 20px rgba(255,0,0,0.3);
+}
+
+.horror-theme .contact-section {
+    background-color: #050000 !important;
+}
+
+.horror-theme .contact-form input,
+.horror-theme .contact-form textarea {
+    background-color: #110000;
+    border: 1px solid #440000;
+    color: #ff0000;
+}
+
+.horror-theme .contact-form input:focus,
+.horror-theme .contact-form textarea:focus {
+    border-color: #ff0000;
+}
+
+.horror-theme .contact-form .btn {
+    background-color: #220000;
+    color: #aa0000;
+}
+
+.horror-theme .contact-form .btn:hover {
+    background-color: #ff0000;
+    color: #000;
+}

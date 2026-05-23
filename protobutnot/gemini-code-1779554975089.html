@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andre's Interactive Space</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigasi bohongan biar keliatan kayak web asli -->
+    <nav class="navbar">
+        <div class="logo">ANDRE.DEV</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Area utama tempat game nongkrong -->
+    <section id="home" class="hero-section">
+        <h1>Welcome to My Project</h1>
+        <p class="subtitle">An experiment in web interactivity.</p>
+        
+        <!-- Kotak Game -->
+        <div id="game-box" class="button-mode">
+            <span id="play-text">PLAY GA<span id="letter-m">M</span>E</span>
+        </div>
+    </section>
+
+    <!-- Area konten tambahan buat diacak-acak nanti -->
+    <section id="about" class="about-section">
+        <!-- Nah, ini huruf T yang bisa ditarik nanti -->
+        <h2>About <span id="kunci-t" draggable="true" title="Coba tarik gua!">T</span>his Concept</h2>
+        <div class="content-grid">
+            <div class="card">
+                <h3>Clean Design</h3>
+                <p>Website ini didesain sesederhana mungkin agar fokus pada pengalaman pengguna dan interaktivitas yang mulus tanpa gangguan.</p>
+            </div>
+            <div class="card">
+                <h3>Hidden Secrets</h3>
+                <p>Terkadang, hal yang terlihat biasa menyimpan sesuatu yang lebih dalam. Jangan ragu untuk mengeksplorasi setiap elemen yang ada di layar Anda.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Andre Christian Manurung. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
