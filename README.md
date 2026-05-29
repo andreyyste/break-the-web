@@ -46,5 +46,3 @@ npm run dev
 - Zustand (State Management)
 - Vanilla CSS
 
-## License
-MIT License
