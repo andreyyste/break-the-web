@@ -1,0 +1,12 @@
+{
+  "include": true,
+  "featured": true,
+  "order": 1,
+  "title": "Break The Web",
+  "brief": "A meta-puzzle game where a standard React portfolio website becomes the physics-based environment for a Phaser 3 snake game.",
+  "description": "Interact with the web page itself using HTML5 Drag-and-Drop to pull inputs and images directly into the Phaser physics engine. Alter the website state through bi-directional communication between React and Phaser, unlocking a glitchy horror mode. The game is built using React, Phaser 3, Zustand for state management, and Vanilla CSS.",
+  "tags": ["React", "Phaser 3", "TypeScript", "Zustand", "Vite"],
+  "coverImage": null,
+  "hasSourceCode": true,
+  "liveUrl": null
+}
